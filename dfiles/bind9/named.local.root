@@ -1,0 +1,10 @@
+; -----------------------------------------------------------
+; named.root.local
+; root hints file used for locally slaving the root zone
+;
+; -----------------------------------------------------------
+
+.                    360      NS	a.root-loc.
+a.root-loc.	         360      A	    172.77.0.2
+
+; End of file

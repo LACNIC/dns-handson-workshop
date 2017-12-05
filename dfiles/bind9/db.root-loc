@@ -1,0 +1,5 @@
+root-loc.		10	IN	SOA	a.root-loc. nstld.verisign-grs.com. 2016092701 1800 900 604800 86400
+;
+root-loc.		10	IN	NS	a.root-loc.
+a.root-loc.		10	IN	A	172.77.0.2
+;
