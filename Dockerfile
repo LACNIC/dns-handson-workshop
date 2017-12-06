@@ -5,7 +5,7 @@ MAINTAINER Carlos M. Martinez, version: 0.1
 
 RUN apt-get update  
 RUN apt-get install -y bind9 bind9-doc bind9-host bind9utils
-RUN apt-get install -y iputils-ping dnsutils
+RUN apt-get install -y iputils-ping dnsutils binutils
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN mkdir /dfiles
 
