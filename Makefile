@@ -3,7 +3,7 @@
 
 IMAGE = dnsworkshop:bind9
 NAMEDPFX = /opt/bind9.10
-STDGROUPS = group1 group2 group3 group4 group5
+STDGROUPS = group0 group1 group2 group3 group4 group5
 
 help:
 	echo "Usage: make build|network|rootshell|clean"
