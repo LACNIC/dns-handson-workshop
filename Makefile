@@ -17,21 +17,24 @@ network:
 
 enableroot:
 	echo Enabling A.ROOT-LOC.
-	- docker run --net dnsworkshop --dns=172.77.0.2 --ip 172.77.0.2 -d -v $$(pwd)/dfiles/bind9:/bind9 \
-	   $(IMAGE) \
-	   $(NAMEDPFX)/sbin/named -c /bind9/pri_rootserver/named.conf -g
+	- docker run --net dnsworkshop --dns=172.77.0.2 --ip 172.77.0.2 -d -v $$(pwd)/dfiles/bind9/pri_rootserver:/bind9 \
+	   --name=dnswk_aroot $(IMAGE) \
+	   $(NAMEDPFX)/sbin/named -c /bind9/named.conf -g
 	#
 	echo Enabling B.ROOT-LOC.
-	- docker run --net dnsworkshop --dns=172.77.0.3 --ip 172.77.0.3 -d -v $$(pwd)/dfiles/bind9:/bind9 \
-	   $(IMAGE) \
-	   $(NAMEDPFX)/sbin/named -c /bind9/sla_rootserver/named.conf -g
-
+	- docker run --net dnsworkshop --dns=172.77.0.3 --ip 172.77.0.3 -d -v $$(pwd)/dfiles/bind9/sla_rootserver:/bind9 \
+	   --name=dnswk_broot $(IMAGE) \
+	   $(NAMEDPFX)/sbin/named -c /bind9/named.conf -g
 
 shell:
 	docker run --net dnsworkshop --dns=172.77.0.2 --ip 172.77.255.254 -ti  --hostname="dnshost" \
 	   -v $$(pwd)/dfiles/bind9:/bind9 \
 	   $(IMAGE) \
 	   /bin/bash
+
+stop:
+	docker stop dnswk_aroot dnswk_broot
+	docker rm dnswk_aroot dnswk_broot
 
 clean:
 	# docker rmi lacnic_bind9
