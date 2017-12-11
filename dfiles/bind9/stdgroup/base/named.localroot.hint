@@ -7,4 +7,7 @@
 .                    360      NS	a.root-loc.
 a.root-loc.	         360      A	    172.77.0.2
 
+.                    360      NS	b.root-loc.
+b.root-loc.	         360      A	    172.77.0.3
+
 ; End of file
