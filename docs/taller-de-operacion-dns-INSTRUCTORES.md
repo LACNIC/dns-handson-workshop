@@ -24,3 +24,9 @@ $ make network
 $ make enableroot
 ```
 
+Clonar los grupos de estudiantes
+
+```shell
+$ make clonegroups
+```
+

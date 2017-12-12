@@ -1,0 +1,16 @@
+.      		10 IN SOA a.root-loc. carlos_ROOTMASTER.lacnic.net. (
+				20171207   ; serial
+				30         ; refresh
+				15         ; retry (15 minutes)
+				604800     ; expire (1 week)
+				30         ; minimum (1 day)
+			)
+
+;
+.               10  IN  NS  a.root-loc.
+.               10  IN  NS  b.root-loc.
+root-loc.		10	IN	NS	a.root-loc.
+root-loc.		10	IN	NS	b.root-loc.
+a.root-loc.		10	IN	A	172.77.0.2
+b.root-loc.		10	IN	A	172.77.0.3
+;

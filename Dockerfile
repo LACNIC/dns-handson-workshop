@@ -4,7 +4,7 @@
 FROM ubuntu:16.04 as Bind9Builder
 MAINTAINER carlos@xt6.us
 WORKDIR /root
-RUN apt-get update && apt-get install -y wget inetutils-ping net-tools libssl-dev build-essential
+RUN apt-get update && apt-get install -y wget inetutils-ping net-tools libssl-dev build-essential vim-tiny
 RUN wget -q --output-document=bind.tar.gz ftp://ftp.isc.org/isc/bind9/9.10.2/bind-9.10.2.tar.gz
 RUN mkdir -p /root/bind && tar xzvf /root/bind.tar.gz -C /root/bind --strip-components=1
 WORKDIR /root/bind

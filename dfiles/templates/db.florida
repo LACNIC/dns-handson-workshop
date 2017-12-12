@@ -1,0 +1,17 @@
+florida.		10 IN SOA a.florida. carlos.lacnic.net. (
+				2018010100 ; serial
+				30         ; refresh
+				900        ; retry (15 minutes)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+
+;
+florida.		10	IN	NS	a.florida.
+florida.		10	IN	NS	b.florida.
+a.florida.		10	IN	A	172.77.1.1
+b.florida.		10	IN	A	172.77.1.2
+;
+turismo			10	IN	A		192.168.15.15
+turismo			10	IN	AAAA	2001:db8:dead:beef::1 
+;
