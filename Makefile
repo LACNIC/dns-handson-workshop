@@ -15,13 +15,37 @@ network:
 	- docker network rm dnsworkshop
 	docker network create --subnet=172.77.0.0/16 dnsworkshop
 
+clonegroups:
+	@for G in $(STDGROUPS); do \
+		echo Creating $$G; \
+		cp -Rvp dfiles/bind9/stdgroup/base dfiles/bind9/$$G; \
+	done
+
+cleangroups:
+	@for G in $(STDGROUPS); do \
+		echo Cleaning $$G; \
+		docker rm --force $$G; \
+		rm -rf dfiles/bind9/$$G; \
+	done
+
+startgroups:
+	@for G in $(STDGROUPS); do \
+		echo Starting named for $$G; \
+		docker rm $$G; \
+		docker run --net dnsworkshop --dns=172.77.0.2 -d -v $$(pwd)/dfiles/bind9/$$G:/bind9 \
+	   		--name=$$G $(IMAGE) \
+	   		$(NAMEDPFX)/sbin/named -c /bind9/named.conf -g; \
+	done
+
 enableroot:
 	echo Enabling A.ROOT-LOC.
+	- docker rm --force dnswk_aroot
 	- docker run --net dnsworkshop --dns=172.77.0.2 --ip 172.77.0.2 -d -v $$(pwd)/dfiles/bind9/pri_rootserver:/bind9 \
 	   --name=dnswk_aroot $(IMAGE) \
 	   $(NAMEDPFX)/sbin/named -c /bind9/named.conf -g
 	#
 	echo Enabling B.ROOT-LOC.
+	- docker rm --force dnswk_broot
 	- docker run --net dnsworkshop --dns=172.77.0.3 --ip 172.77.0.3 -d -v $$(pwd)/dfiles/bind9/sla_rootserver:/bind9 \
 	   --name=dnswk_broot $(IMAGE) \
 	   $(NAMEDPFX)/sbin/named -c /bind9/named.conf -g
