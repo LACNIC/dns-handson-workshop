@@ -13,7 +13,8 @@ help:
 	@echo "	make cleangroups: removes (rm -rf) each student group folder"
 
 build: Dockerfile
-	docker build -t lacnic_bind9 .
+	wget -cN --output-document=bind.tar.gz http://ftp.isc.org/isc/bind9/9.10.2/bind-9.10.2.tar.gz
+	docker build -t dnsworkshop:bind9 .
 
 network: 
 	-docker network rm dnsworkshop
