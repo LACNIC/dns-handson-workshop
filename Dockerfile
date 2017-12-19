@@ -42,4 +42,6 @@ RUN cd / && tar xzvf /root/bind9.10.tar.gz  && rm /root/bind9.10.tar.gz
 RUN useradd -m -s /bin/bash named
 
 # CMD ["/opt/bind9.10/sbin/named", "-g", ""]
-CMD ["su","-c","/bin/bash", "", ""]
+USER named
+# CMD ["su","-c","/bin/bash", "", ""]
+CMD ["/bin/bash"]

@@ -50,13 +50,13 @@ enableroot:
 	echo Enabling A.ROOT-LOC.
 	- docker rm --force dnswk_aroot
 	- docker run --net dnsworkshop --dns=172.77.0.2 --ip 172.77.0.2 -d -v $$(pwd)/dfiles/bind9/pri_rootserver:/bind9 \
-	   --name=dnswk_aroot --hostname=aroot $(IMAGE) \
+	   --name=dnswk_aroot --hostname=aroot --user=root $(IMAGE) \
 	   $(NAMEDPFX)/sbin/named -c /bind9/named.conf -g
 	#
 	echo Enabling B.ROOT-LOC.
 	- docker rm --force dnswk_broot
 	- docker run --net dnsworkshop --dns=172.77.0.3 --ip 172.77.0.3 -d -v $$(pwd)/dfiles/bind9/sla_rootserver:/bind9 \
-	   --name=dnswk_broot --hostname=broot $(IMAGE) \
+	   --name=dnswk_broot --hostname=broot --user=root $(IMAGE) \
 	   $(NAMEDPFX)/sbin/named -c /bind9/named.conf -g
 
 stoproot:
