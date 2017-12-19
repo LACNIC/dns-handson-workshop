@@ -1,7 +1,7 @@
 # Makefile para ejecutar el ambiente
 # (c) carlos@lacnic.net, 20171205
 
-IMAGE = dnsworkshop:bind9
+IMAGE = dnsworkshop:worker
 NAMEDPFX = /opt/bind9.10
 STDGROUPS = group0a group0b group1a group1b group2a group2b group3a group3b group4a group4b group5a group5b
 
@@ -12,9 +12,13 @@ help:
 	@echo "	make clonegroups: clones each student group files"
 	@echo "	make cleangroups: removes (rm -rf) each student group folder"
 
-build: Dockerfile
-	wget -cN --output-document=bind.tar.gz http://ftp.isc.org/isc/bind9/9.10.2/bind-9.10.2.tar.gz
-	docker build -t dnsworkshop:bind9 .
+compile: Bind9Builder/Dockerfile
+	wget -cN --output-document=Bind9Builder/bind.tar.gz http://ftp.isc.org/isc/bind9/9.10.2/bind-9.10.2.tar.gz
+	docker build -t dnsworkshop:builder Bind9Builder/
+	# docker run -v $$(pwd):/v dnsworkshop:builder cp /root/bind9.10.tar.gz /v
+
+build: compile Dockerfile
+	docker build -t dnsworkshop:worker .
 
 network: 
 	-docker network rm dnsworkshop
