@@ -17,6 +17,12 @@
 
 ## Inicial
 
+Compilar el contenedor docker:
+
+```shell
+$ make build
+```
+
 Crear el ambiente y la red
 
 ```shell
@@ -30,3 +36,6 @@ Clonar los grupos de estudiantes
 $ make clonegroups
 ```
 
+## Para cada grupo:
+
+TBW*
