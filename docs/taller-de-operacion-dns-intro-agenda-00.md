@@ -39,7 +39,7 @@ Cada grupo de trabajo (1 o más asistentes) operará dos servidores bind, llamad
 Los pasos para acceder a los mismos son:
 
 1. Acceder al servidor del lab, ```ssh -l tallerdns lisa.labs.lacnic.net```
-2. Entrar al directorio correspondiente a cada servidor, ```cd $HOME/dnsworkshop/dfiles/bind9/groupXa```
+2. Entrar al directorio correspondiente a cada servidor, ```cd $HOME/dns-workshop.git/dfiles/bind9/groupXa```
 3. Para arrancar el servidor: ```make start```
 4. Para detener el servidor: ```make stop```
 5. Para abrir un shell en el servidor: ```make shell```
