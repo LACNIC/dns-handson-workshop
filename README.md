@@ -1,5 +1,4 @@
 # DNS Workshop
 
-docker-based DNS workshop.
+Workshop de DNS basado en contenedores docker en Ubuntu, incluyendo presentaciones y documentos de laboratorio.
 
-## ToDo 
