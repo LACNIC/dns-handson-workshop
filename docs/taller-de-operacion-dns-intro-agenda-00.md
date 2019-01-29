@@ -1,7 +1,5 @@
 # Taller de operación DNS LACNIC
 
-
-
 ## Pre-requisitos
 
 - Repasar habilidades básicas de Unix / Linux
@@ -13,7 +11,18 @@
     - algun editor de texto plano (TextWrangler para la Mac es una buena opción)
     - Slack instalado y configurado el canal "#dnsworkshop"
 
+## Acceso
 
+Usando ssh:
+
+```
+ssh -l tallerdns lisa.labs.lacnic.net 
+```
+
+Credenciales:
+
+- usuario: tallerdns
+- clave: lacnic2019
 
 ## Agenda
 
