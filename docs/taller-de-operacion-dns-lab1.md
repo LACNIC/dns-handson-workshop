@@ -42,3 +42,19 @@ dig +noall +answer www.lacnic.net
 # consulta forzando tcp o transporte ipv6
 dig +tcp +6 A www.lacnic.net
 ```
+
+## Exploracion:
+
+### 1. Identificar los servidores de nombre de un dominio
+
+Identificar los servidores DNS que responden para los dominios:
+1. lacnic.net
+2. antel.com.uy
+3. lactld.org
+4. labs.lacnic.net
+
+Preguntas a responder:
+
+1. ¿Cuáles son los TTLs de los registros NS?
+2. ¿Cuáles son los TTLs de los registros A y AAA asociados?
+3. 
